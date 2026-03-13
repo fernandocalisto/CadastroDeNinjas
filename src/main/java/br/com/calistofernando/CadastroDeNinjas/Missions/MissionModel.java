@@ -18,8 +18,11 @@ public class MissionModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "difficulty")
     private MissionDifficulty difficulty;
     // Uma missão pode ter vários ninjas
     @OneToMany(mappedBy = "mission")
