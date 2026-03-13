@@ -22,6 +22,7 @@ public class MissionModel {
     private Long id;
     @Column(name = "name")
     private String name;
+    @Enumerated(EnumType.STRING)
     @Column(name = "difficulty")
     private MissionDifficulty difficulty;
     // Uma missão pode ter vários ninjas
