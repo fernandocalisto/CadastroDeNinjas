@@ -20,9 +20,9 @@ public class NinjaController {
         return "This is my first route";
     }
 
-    @PostMapping("/create")
-    public String createNinja(){
-        return "Ninja created!";
+    @PostMapping("/add")
+    public NinjaModel addNinja(@RequestBody NinjaModel ninja){
+        return ninjaService.createNinja(ninja);
     }
 
     @GetMapping("/all")
