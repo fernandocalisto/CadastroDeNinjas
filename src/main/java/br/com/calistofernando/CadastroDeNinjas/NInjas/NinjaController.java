@@ -3,7 +3,7 @@ package br.com.calistofernando.CadastroDeNinjas.NInjas;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("ninja")
 
 public class NinjaController {
 
