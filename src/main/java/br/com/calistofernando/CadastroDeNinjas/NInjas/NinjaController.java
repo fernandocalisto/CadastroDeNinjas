@@ -30,6 +30,11 @@ public class NinjaController {
         return this.ninjaService.showAllNinjas();
     }
 
+    @GetMapping("/id/{id}")
+    public NinjaModel showByID(@PathVariable Long id){
+        return this.ninjaService.findNinjaByID(id);
+    }
+
     @PutMapping("/modify")
     public String modifyNinja(){
         return "Modifying ninja!";
