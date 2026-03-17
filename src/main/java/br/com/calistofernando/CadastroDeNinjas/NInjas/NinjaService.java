@@ -17,11 +17,11 @@ public class NinjaService {
 
     // show all ninjas
 
-    public List<NinjaModel> showAllNinjas(){
+    public List<NinjaModel> showAllNinjas() {
         return ninjaRepository.findAll();
     }
 
-    public NinjaModel findNinjaByID(Long id){
+    public NinjaModel findNinjaByID(Long id) {
         Optional<NinjaModel> ninjaModel = ninjaRepository.findById(id);
         return ninjaModel.orElse(null);
     }
@@ -30,7 +30,15 @@ public class NinjaService {
         return ninjaRepository.save(ninja);
     }
 
-    public void deleteNinjaByID(Long id){
+    public void deleteNinjaByID(Long id) {
         ninjaRepository.deleteById(id);
+    }
+
+    public NinjaModel modifyByID(Long id, NinjaModel ninjaModel) {
+        if (ninjaRepository.existsById(id)) {
+            ninjaModel.setId(id);
+            return ninjaRepository.save(ninjaModel);
+        }
+        return null;
     }
 }

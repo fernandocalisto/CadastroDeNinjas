@@ -35,9 +35,9 @@ public class NinjaController {
         return this.ninjaService.findNinjaByID(id);
     }
 
-    @PutMapping("/modify")
-    public String modifyNinja(){
-        return "Modifying ninja!";
+    @PutMapping("/modify/{id}")
+    public NinjaModel modifyNinjaByID(@PathVariable Long id, @RequestBody NinjaModel ninja){
+        return this.ninjaService.modifyByID(id, ninja);
     }
 
     @DeleteMapping("/delete/{id}")
