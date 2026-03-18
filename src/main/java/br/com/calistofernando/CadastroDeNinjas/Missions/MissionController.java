@@ -15,8 +15,8 @@ public class MissionController {
     private final MissionService missionService;
 
     @PostMapping("/create")
-    public String createMission() {
-        return "Creating Mission...";
+    public MissionModel addMission(@RequestBody MissionModel missionModel) {
+        return this.missionService.addMission(missionModel);
     }
 
     @GetMapping("/all")

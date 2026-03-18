@@ -21,4 +21,8 @@ public class MissionService {
         Optional<MissionModel> missionModel = missionRepository.findById(id);
         return missionModel.orElse(null);
     }
+
+    public MissionModel addMission(MissionModel missionModel) {
+        return this.missionRepository.save(missionModel);
+    }
 }
