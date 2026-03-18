@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("mission")
@@ -29,9 +28,9 @@ public class MissionController {
         return this.missionService.getMissionByID(id);
     }
 
-    @PutMapping("/modify")
-    public String modifyMission() {
-        return "Modifying Mission...";
+    @PutMapping("/modify/{id}")
+    public MissionModel modifyMissionByID (@PathVariable Long id, @RequestBody MissionModel missionModel) {
+        return this.missionService.modifyMissionByID(id, missionModel);
     }
 
     @DeleteMapping("/delete/{id}")
