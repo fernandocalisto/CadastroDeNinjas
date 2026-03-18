@@ -34,8 +34,8 @@ public class MissionController {
         return "Modifying Mission...";
     }
 
-    @DeleteMapping("/delete")
-    public String deleteMission() {
-        return "Deleting Mission...";
+    @DeleteMapping("/delete/{id}")
+    public void deleteMission(@PathVariable Long id) {
+        this.missionService.deleteMissionByID(id);
     }
 }
