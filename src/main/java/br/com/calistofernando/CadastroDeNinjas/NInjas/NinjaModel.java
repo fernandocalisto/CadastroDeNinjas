@@ -1,7 +1,6 @@
-package br.com.calistofernando.CadastroDeNinjas.NInjas;
+package br.com.calistofernando.CadastroDeNinjas.Ninjas;
 
 import br.com.calistofernando.CadastroDeNinjas.Missions.MissionModel;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +24,8 @@ public class NinjaModel {
     private String email;
     @Column(name = "age")
     private int age;
+    @Column(name = "rank")
+    private String rank;
     //Um ninja tem apenas uma única missão
     @ManyToOne
     @JoinColumn(name = "missions_id")
