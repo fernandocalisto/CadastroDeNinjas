@@ -1,5 +1,6 @@
 package br.com.calistofernando.CadastroDeNinjas.Missions;
 
+import br.com.calistofernando.CadastroDeNinjas.Ninjas.NinjaModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,28 +13,36 @@ import java.util.Optional;
 public class MissionService {
 
     private final MissionRepository missionRepository;
+    private final MissionMapper missionMapper;
 
-    public List<MissionModel> showAllMissions() {
-        return missionRepository.findAll();
+    public List<MissionDTO> showAllMissions() {
+        List<MissionModel> mission  = missionRepository.findAll();
+        return mission.stream()
+                .map(missionMapper::map)
+                .toList();
     }
 
-    public MissionModel getMissionByID(Long id) {
+    public MissionDTO getMissionByID(Long id) {
         Optional<MissionModel> missionModel = missionRepository.findById(id);
-        return missionModel.orElse(null);
+        return missionModel.map(missionMapper::map).orElse(null);
     }
 
-    public MissionModel addMission(MissionModel missionModel) {
-        return this.missionRepository.save(missionModel);
+    public MissionDTO addMission(MissionDTO missionDTO) {
+        MissionModel missionModel = missionMapper.map(missionDTO);
+        missionRepository.save(missionModel);
+        return missionMapper.map(missionModel);
     }
 
     public void deleteMissionByID (Long id) {
         this.missionRepository.deleteById(id);
     }
 
-    public MissionModel modifyMissionByID (Long id, MissionModel missionModel) {
-        if (this.missionRepository.existsById(id)){
+    public MissionDTO modifyMissionByID (Long id, MissionModel missionModel) {
+        Optional<MissionModel> missionModelOptional = missionRepository.findById(id);
+        if (missionModelOptional.isPresent()) {
             missionModel.setId(id);
-            return this.missionRepository.save(missionModel);
+            MissionModel savedMission = missionRepository.save(missionModel);
+            return missionMapper.map(savedMission);
         }
         return null;
     }
