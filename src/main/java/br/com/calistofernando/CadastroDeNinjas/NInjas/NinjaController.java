@@ -1,4 +1,4 @@
-package br.com.calistofernando.CadastroDeNinjas.NInjas;
+package br.com.calistofernando.CadastroDeNinjas.Ninjas;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +21,7 @@ public class NinjaController {
     }
 
     @PostMapping("/add")
-    public NinjaModel addNinja(@RequestBody NinjaModel ninja){
+    public NinjaDTO addNinja(@RequestBody NinjaDTO ninja){
         return ninjaService.createNinja(ninja);
     }
 

@@ -1,6 +1,6 @@
 package br.com.calistofernando.CadastroDeNinjas.Missions;
 
-import br.com.calistofernando.CadastroDeNinjas.NInjas.NinjaModel;
+import br.com.calistofernando.CadastroDeNinjas.Ninjas.NinjaModel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

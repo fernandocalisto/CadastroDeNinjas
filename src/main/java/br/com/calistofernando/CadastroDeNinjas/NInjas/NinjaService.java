@@ -1,4 +1,4 @@
-package br.com.calistofernando.CadastroDeNinjas.NInjas;
+package br.com.calistofernando.CadastroDeNinjas.Ninjas;
 
 import org.springframework.stereotype.Service;
 
@@ -10,12 +10,12 @@ import java.util.Optional;
 public class NinjaService {
 
     private NinjaRepository ninjaRepository;
+    private NinjaMapper ninjaMapper;
 
-    public NinjaService(NinjaRepository ninjaRepository) {
+    public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
+        this.ninjaMapper = ninjaMapper;
     }
-
-    // show all ninjas
 
     public List<NinjaModel> showAllNinjas() {
         return ninjaRepository.findAll();
@@ -26,8 +26,10 @@ public class NinjaService {
         return ninjaModel.orElse(null);
     }
 
-    public NinjaModel createNinja(NinjaModel ninja) {
-        return ninjaRepository.save(ninja);
+    public NinjaDTO createNinja(NinjaDTO ninjaDTO) {
+        NinjaModel ninjaModel = ninjaMapper.map(ninjaDTO);
+        ninjaRepository.save(ninjaModel);
+        return ninjaMapper.map(ninjaModel);
     }
 
     public void deleteNinjaByID(Long id) {
