@@ -1,6 +1,5 @@
-package br.com.calistofernando.CadastroDeNinjas.NInjas;
+package br.com.calistofernando.CadastroDeNinjas.Ninjas;
 
-import br.com.calistofernando.CadastroDeNinjas.Missions.MissionModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface NinjaRepository extends JpaRepository<NinjaModel, Long> {
