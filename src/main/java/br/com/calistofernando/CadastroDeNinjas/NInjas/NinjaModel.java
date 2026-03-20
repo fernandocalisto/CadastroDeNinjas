@@ -6,12 +6,14 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "tb_ninja_registration")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@ToString(exclude = "mission")
 
 public class NinjaModel {
 
