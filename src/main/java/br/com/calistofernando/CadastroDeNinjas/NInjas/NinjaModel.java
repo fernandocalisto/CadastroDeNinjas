@@ -1,6 +1,7 @@
 package br.com.calistofernando.CadastroDeNinjas.Ninjas;
 
 import br.com.calistofernando.CadastroDeNinjas.Missions.MissionModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,5 +30,6 @@ public class NinjaModel {
     //Um ninja tem apenas uma única missão
     @ManyToOne
     @JoinColumn(name = "missions_id")
+    @JsonIgnore
     private MissionModel mission;
 }
