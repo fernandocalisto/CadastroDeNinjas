@@ -1,35 +1,59 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="pt-BR" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tabela de Ninjas</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
 
-<h1>Lista de Ninjas</h1>
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>NOME</th>
-            <th>IDADE</th>
-            <th>EMAIL</th>
-            <th>RANK</th>
-        </tr>
-    </thead>
+<div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <h1 style="margin-bottom: 0;"><span class="highlight">Shinobi</span> Roster</h1>
+        <a th:href="@{/ninja/ui/add}" class="btn btn-edit" style="padding: 10px 20px; font-size: 1rem; background-color: #10b981;">+ Novo Ninja</a>
+    </div>
 
-    <tbody>
-    <tr th:each ="ninja: ${ninjaList}">
-        <td th:text = "${ninja.id}"></td>
-        <td th:text = "${ninja.name}"></td>
-        <td th:text = "${ninja.age}"></td>
-        <td th:text = "${ninja.email}"></td>
-        <td th:text = "${ninja.rank}"></td>
-    </tr>
-    </tbody>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>NOME</th>
+                <th>IDADE</th>
+                <th>EMAIL</th>
+                <th>RANK</th>
+                <th>MISSÃO</th>
+                <th>AÇÕES</th>
+            </tr>
+            </thead>
 
-</table>
+            <tbody>
+            <tr th:each="ninja: ${ninjaList}">
+                <td th:text="${ninja.id}"></td>
+                <td class="ninja-name" th:text="${ninja.name}"></td>
+                <td th:text="${ninja.age}"></td>
+                <td th:text="${ninja.email}"></td>
+                <td><span class="badge rank-badge" th:text="${ninja.rank}"></span></td>
+                <td>
+                    <span th:if="${ninja.mission != null}" class="mission-active">
+                        🗡️ <span th:text="${ninja.mission.name}"></span>
+                        <span class="badge difficulty-badge" th:text="'Rank ' + ${ninja.mission.difficulty}"></span>
+                    </span>
+                    <span th:if="${ninja.mission == null}" class="mission-idle">Aguardando Ordens</span>
+                </td>
+                <td>
+                    <div class="action-links">
+                        <a th:href="@{/ninja/ui/id/{id}(id=${ninja.id})}" class="btn btn-view">Ver</a>
+                        <a th:href="@{/ninja/ui/update/{id}(id=${ninja.id})}" class="btn btn-edit">Alterar</a>
+                        <a th:href="@{/ninja/ui/delete/{id}(id=${ninja.id})}" class="btn btn-delete">Deletar</a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 </body>
 </html>

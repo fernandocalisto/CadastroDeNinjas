@@ -1,0 +1,156 @@
+:root {
+    --bg-main: #0b0f19;
+    --bg-panel: #161e2e;
+    --text-main: #e2e8f0;
+    --text-muted: #94a3b8;
+    --accent-red: #ef4444;
+    --accent-red-hover: #dc2626;
+    --accent-blue: #3b82f6;
+    --accent-blue-hover: #2563eb;
+    --border-color: #334155;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    border-left: 5px solid var(--accent-red);
+    padding-left: 15px;
+}
+
+.highlight {
+    color: var(--accent-red);
+}
+
+.table-wrapper {
+    background-color: var(--bg-panel);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th, td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.ninja-name {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.rank-badge {
+    background-color: #475569;
+    color: white;
+}
+
+.difficulty-badge {
+    background-color: #b91c1c;
+    color: white;
+    margin-left: 5px;
+}
+
+.mission-active {
+    color: #6ee7b7;
+}
+
+.mission-idle {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.action-links {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.btn-view {
+    background-color: #475569;
+}
+
+.btn-view:hover {
+    background-color: #64748b;
+}
+
+.btn-edit {
+    background-color: var(--accent-blue);
+}
+
+.btn-edit:hover {
+    background-color: var(--accent-blue-hover);
+}
+
+.btn-delete {
+    background-color: var(--accent-red);
+}
+
+.btn-delete:hover {
+    background-color: var(--accent-red-hover);
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+}

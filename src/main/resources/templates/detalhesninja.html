@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Detalhes do Shinobi</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+
+    <style>
+        .profile-card {
+            background-color: var(--bg-panel);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            padding: 2.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+            border-top: 4px solid var(--accent-blue);
+        }
+        .profile-item {
+            margin-bottom: 1.2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .profile-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .profile-label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+        .profile-value {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        .profile-actions {
+            margin-top: 2rem;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1><span class="highlight">Shinobi</span> Profile</h1>
+
+    <div class="profile-card">
+        <div class="profile-item">
+            <span class="profile-label">Registro (ID)</span>
+            <span class="profile-value" th:text="${ninja.id}"></span>
+        </div>
+
+        <div class="profile-item">
+            <span class="profile-label">Nome</span>
+            <span class="profile-value ninja-name" th:text="${ninja.name}"></span>
+        </div>
+
+        <div class="profile-item">
+            <span class="profile-label">Idade</span>
+            <span class="profile-value" th:text="${ninja.age} + ' anos'"></span>
+        </div>
+
+        <div class="profile-item">
+            <span class="profile-label">Email de Contato</span>
+            <span class="profile-value" th:text="${ninja.email}"></span>
+        </div>
+
+        <div class="profile-item">
+            <span class="profile-label">Rank Oficial</span>
+            <span class="badge rank-badge" th:text="${ninja.rank}"></span>
+        </div>
+
+        <div class="profile-item">
+            <span class="profile-label">Status de Missão</span>
+            <div class="profile-value">
+                <span th:if="${ninja.mission != null}" class="mission-active">
+                    🗡️ <span th:text="${ninja.mission.name}"></span>
+                    <span class="badge difficulty-badge" th:text="'Rank ' + ${ninja.mission.difficulty}"></span>
+                </span>
+                <span th:if="${ninja.mission == null}" class="mission-idle">Aguardando Ordens</span>
+            </div>
+        </div>
+
+        <div class="profile-actions">
+            <a th:href="@{/ninja/ui/all}" class="btn btn-view">Voltar para Lista</a>
+            <a th:href="@{/ninja/ui/update/{id}(id=${ninja.id})}" class="btn btn-edit">Editar Perfil</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
