@@ -1,5 +1,8 @@
 package br.com.calistofernando.CadastroDeNinjas.Ninjas;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +34,11 @@ public class NinjaController {
     }
 
     @GetMapping("/all")
+    @Operation(summary = "Retornar todos os ninjas",description = "Este método retorna uma lista de todos os ninjas cadastrados, retornando uma lista vazia caso não tenha nenhum ninja cadastrado.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Ninja Criado com Sucesso!"),
+            @ApiResponse(responseCode = "400", description = "Erro na criação do Ninja!")
+    })
     public ResponseEntity<List<NinjaDTO>> showAllNinjas(){
         List<NinjaDTO> ninjaList = ninjaService.showAllNinjas();
         return ResponseEntity.ok(ninjaList);
